@@ -1,0 +1,23 @@
+{
+   "kind":"Service",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"elasticsearch-master",
+      "labels":{
+         "app":"elasticsearch",
+         "role":"master"
+      }
+   },
+   "spec":{
+      "ports": [
+        {
+          "port":9200,
+          "targetPort":"elastic-server"
+        }
+      ],
+      "selector":{
+         "app":"elasticsearch",
+         "role":"master"
+      }
+   }
+}

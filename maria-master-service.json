@@ -1,0 +1,23 @@
+{
+   "kind":"Service",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"mariadb-master",
+      "labels":{
+         "app":"mariadb",
+         "role":"master"
+      }
+   },
+   "spec":{
+      "ports": [
+        {
+          "port":3306,
+          "targetPort":"mariadb-server"
+        }
+      ],
+      "selector":{
+         "app":"mariadb",
+         "role":"master"
+      }
+   }
+}

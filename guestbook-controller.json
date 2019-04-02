@@ -1,0 +1,55 @@
+{
+   "kind":"ReplicationController",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"liferay",
+      "labels":{
+         "app":"liferay"
+      }
+   },
+   "spec":{
+      "replicas":1,
+      "selector":{
+         "app":"liferay"
+      },
+      "template":{
+         "metadata":{
+            "labels":{
+               "app":"liferay"
+            }
+         },
+         "spec":{
+            "containers":[
+               {
+                  "name":"liferay",
+                  "image":"liferay/portal:7.1.2-ga3",
+                  "ports":[
+                     {
+                        "name":"http-server",
+                        "containerPort":8080
+                     }
+                  ],
+                  "env":[
+                     {
+                        "name": "LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME",
+                        "value": "org.mariadb.jdbc.Driver"
+                     },
+                     {
+                        "name": "LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL",
+                        "value": "jdbc:mariadb://mariadb-master/lportal?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false"
+                     },
+                     {
+                        "name": "LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME",
+                        "value": "root"
+                     },
+                     {
+                        "name": "LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD",
+                        "value": "liferay"
+                     }
+                  ]
+               }
+            ]
+         }
+      }
+   }
+}

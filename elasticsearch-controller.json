@@ -1,0 +1,54 @@
+{
+   "kind":"ReplicationController",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"elasticsearch-master",
+      "labels":{
+         "app":"elasticsearch",
+         "role":"master"z
+      }
+   },
+   "spec":{
+      "replicas":1,
+      "selector":{
+         "app":"elasticsearch",
+         "role":"master"
+      },
+      "template":{
+         "metadata":{
+            "labels":{
+               "app":"elasticsearch",
+               "role":"master"
+            }
+         },
+         "spec":{
+            "containers":[
+               {
+                  "name":"elasticsearch-master",
+                  "image":"ajsampang67/elasticsearch:6.5.4",
+                  "ports":[
+                     {
+                        "name":"elastic-server",
+                        "containerPort":9200
+                     }
+                  ],
+                  "env":[
+                     {
+                        "name": "cluster.name",
+                        "value": "LiferayElasticsearchCluster"
+                     },
+                     {
+                        "name": "bootstrap.memory.lock",
+                        "value": "true"
+                     },
+                     {
+                        "name": "ES_JAVA_OPTS",
+                        "value": "-Xms512m -Xmx512m"
+                     }
+                  ]
+               }
+            ]
+         }
+      }
+   }
+}

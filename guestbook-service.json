@@ -1,0 +1,22 @@
+{
+   "kind":"Service",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"liferay",
+      "labels":{
+         "app":"liferay"
+      }
+   },
+   "spec":{
+      "ports": [
+         {
+           "port":80,
+           "targetPort":"http-server"
+         }
+      ],
+      "selector":{
+         "app":"liferay"
+      },
+      "type": "LoadBalancer"
+   }
+}
