@@ -52,13 +52,29 @@
                      },
                      {
                         "name": "JAVA_OPTS",
-                        "value": "-Dorg.xml.sax.driver=org.apache.xerces.parsers.SAXParser"
+                        "value": "-Dorg.xml.sax.driver=org.apache.xerces.parsers.SAXParser -Djgroups.bind_addr=match-interface:eth0"
+                     },
+                     {
+                        "name": "_LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_ENABLED",
+                        "value": "true"
+                     },
+                     {
+                        "name": "_LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_CHANNEL_PERIOD_PROPERTIES_PERIOD_CONTROL",
+                        "value": "/opt/liferay/jgroups/tcp.xml"
+                     },
+                     {
+                        "name": "_LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_CHANNEL_PERIOD_PROPERTIES_PERIOD_TRANSPORT_PERIOD__NUMBER0_",
+                        "value": "/opt/liferay/jgroups/tcp.xml"
                      }
                   ],
                   "volumeMounts":[
                      {
                         "name":"osgi-volume",
                         "mountPath":"/opt/liferay/osgi/configs"
+                     },
+                     {
+                        "name":"tcp-volume",
+                        "mountPath":"/opt/liferay/jgroups"
                      }
                   ]
                }
@@ -68,6 +84,12 @@
                   "name": "osgi-volume",
                   "configMap": {
                      "name": "osgi-configs"
+                  }
+               },
+               {
+                  "name": "tcp-volume",
+                  "configMap": {
+                     "name": "tcp-config"
                   }
                }
             ]
