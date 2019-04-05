@@ -55,15 +55,15 @@
                         "value": "-Dorg.xml.sax.driver=org.apache.xerces.parsers.SAXParser -Djgroups.bind_addr=match-interface:eth0"
                      },
                      {
-                        "name": "_LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_ENABLED",
+                        "name": "LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_ENABLED",
                         "value": "true"
                      },
                      {
-                        "name": "_LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_CHANNEL_PERIOD_PROPERTIES_PERIOD_CONTROL",
+                        "name": "LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_CHANNEL_PERIOD_PROPERTIES_PERIOD_CONTROL",
                         "value": "/opt/liferay/jgroups/tcp.xml"
                      },
                      {
-                        "name": "_LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_CHANNEL_PERIOD_PROPERTIES_PERIOD_TRANSPORT_PERIOD__NUMBER0_",
+                        "name": "LIFERAY_CLUSTER_PERIOD_LINK_PERIOD_CHANNEL_PERIOD_PROPERTIES_PERIOD_TRANSPORT_PERIOD__NUMBER0_",
                         "value": "/opt/liferay/jgroups/tcp.xml"
                      }
                   ],
