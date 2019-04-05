@@ -6,3 +6,8 @@ RUN bin/elasticsearch-plugin install analysis-kuromoji && \
 	bin/elasticsearch-plugin install analysis-stempel
 
 COPY ./config ./config
+
+COPY custom-entrypoint.sh /custom-entrypoint.sh
+
+ENTRYPOINT ["/custom-entrypoint.sh"]
+CMD ["eswrapper"]

@@ -5,7 +5,7 @@
       "name":"elasticsearch-master",
       "labels":{
          "app":"elasticsearch",
-         "role":"master"z
+         "role":"master"
       }
    },
    "spec":{
@@ -38,14 +38,36 @@
                         "value": "LiferayElasticsearchCluster"
                      },
                      {
-                        "name": "bootstrap.memory.lock",
-                        "value": "true"
-                     },
-                     {
                         "name": "ES_JAVA_OPTS",
                         "value": "-Xms512m -Xmx512m"
                      }
                   ]
+               }
+            ],
+            "initContainers": [
+               {
+                  "name": "increase-vm-max-map",
+                  "image": "busybox",
+                  "command": [
+                     "sysctl",
+                     "-w",
+                     "vm.max_map_count=262144"
+                  ],
+                  "securityContext": {
+                     "privileged": true
+                  }
+               },
+               {
+                  "name": "increase-ulimit",
+                  "image": "busybox",
+                  "command": [
+                     "ulimit",
+                     "-l",
+                     "unlimited"
+                  ],
+                  "securityContext": {
+                     "privileged": true
+                  }
                }
             ]
          }
